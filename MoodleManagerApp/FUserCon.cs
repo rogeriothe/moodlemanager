@@ -40,11 +40,53 @@ namespace MoodleManagerApp
             {
                 if (db.User.FirstOrDefault(a=>a.username == item.username) == null)
                 {
-                    Debug.Print(item.username);
+                    User user = new User();
+                    user.email = item.email;
+                    user.firstname = item.firstname;
+                    user.lastname = item.lastname;
+                    user.password = item.password;
+                    user.username = item.username;
+                    user.moodle_id = item.moodle_id;
+                    db.User.Add(user);
+                    db.SaveChanges();
                 }
             }
 
             loadGrid();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            using (FUserAdd f = new FUserAdd())
+            {
+                f.ShowDialog();
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            using (FUserAdd f = new FUserAdd())
+            {
+                int id = Convert.ToInt32(grid.SelectedRows[0].Cells[0].Value.ToString());
+                f.id = id;
+                f.ShowDialog();
+            }
+
+            loadGrid();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            User user = new User();
+            user.moodle_id = 7;
+            UserApi.delete_user(user);
+
+            //int id = Convert.ToInt32(grid.SelectedRows[0].Cells[0].Value.ToString());
+            //var user = db.User.FirstOrDefault(a => a.id == id);
+            //UserApi.delete_user(user);
+            //db.User.Remove(user);
+            //db.SaveChanges();
+            //loadGrid();
         }
     }
 }
