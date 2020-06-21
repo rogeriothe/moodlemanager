@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoodleManagerApp", "MoodleManagerApp\MoodleManagerApp.csproj", "{9BE4D350-1444-4B85-A4D8-C74824025FDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9BE4D350-1444-4B85-A4D8-C74824025FDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BE4D350-1444-4B85-A4D8-C74824025FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BE4D350-1444-4B85-A4D8-C74824025FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BE4D350-1444-4B85-A4D8-C74824025FDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B27B30E-75AC-455B-BB88-A4FB2FFAF1C6}
+	EndGlobalSection
+EndGlobal
