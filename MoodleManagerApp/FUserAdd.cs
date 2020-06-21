@@ -45,28 +45,25 @@ namespace MoodleManagerApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            user.email = txtEmail.Text;
-            user.firstname = txtFirstName.Text;
-            user.lastname = txtLastName.Text;
-            user.password = txtPassword.Text;
-            user.username = txtUserName.Text;
+            
+                    user.email = txtEmail.Text;
+                    user.firstname = txtFirstName.Text;
+                    user.lastname = txtLastName.Text;
+                    user.password = txtPassword.Text;
+                    user.username = txtUserName.Text;
 
-            if (id == 0)
-            {             
+                    if (id == 0)
+                    {
 
-                int moodle_id = UserApi.create_user(user);
-                user.moodle_id = moodle_id;
-                
-            }
-            else
-            {
-                UserApi.update_user(user);
-                
-            }
+                        int moodle_id = UserApi.create_user(user);
+                        user.moodle_id = moodle_id;
 
-            db.User.AddOrUpdate(user);
-            db.SaveChanges();
-            Close();
+                    }                   
+
+                    db.User.AddOrUpdate(user);
+                    db.SaveChanges();
+                    Close();
+            
         }
     }
 }
