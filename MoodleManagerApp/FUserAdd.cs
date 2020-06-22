@@ -14,11 +14,10 @@ namespace MoodleManagerApp
 {
     public partial class FUserAdd : FBase
     {
-
-        moodleEntities db = new moodleEntities();
+                
         public int id = 0;
-        User user = new User();
-        int moodle_id = 0;
+        Users user = new Users();
+
         public FUserAdd()
         {
             InitializeComponent();
@@ -28,13 +27,13 @@ namespace MoodleManagerApp
         {
             if (id != 0)
             {
-                user = db.User.FirstOrDefault(a=>a.id == id);
+                user = db.Users.FirstOrDefault(a => a.id == id);
                 txtEmail.Text = user.email;
                 txtFirstName.Text = user.firstname;
                 txtLastName.Text = user.lastname;
                 txtPassword.Text = user.password;
                 txtUserName.Text = user.username;
-                moodle_id = (int)user.moodle_id;
+                chkSuspended.Checked = (bool)user.suspended;
             }
         }
 
@@ -45,25 +44,30 @@ namespace MoodleManagerApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-                    user.email = txtEmail.Text;
-                    user.firstname = txtFirstName.Text;
-                    user.lastname = txtLastName.Text;
-                    user.password = txtPassword.Text;
-                    user.username = txtUserName.Text;
 
-                    if (id == 0)
-                    {
+            user.email = txtEmail.Text;
+            user.firstname = txtFirstName.Text;
+            user.lastname = txtLastName.Text;
+            user.password = txtPassword.Text;
+            user.username = txtUserName.Text;
+            user.suspended = chkSuspended.Checked;
 
-                        int moodle_id = UserApi.create_user(user);
-                        user.moodle_id = moodle_id;
 
-                    }                   
+            if (id == 0)
+            {
 
-                    db.User.AddOrUpdate(user);
-                    db.SaveChanges();
-                    Close();
-            
+                int moodle_id = UserApi.create_user(user);
+                user.id = moodle_id;
+
+            }else
+            {
+                UserApi.update_user(user);
+            }
+
+            db.Users.AddOrUpdate(user);
+            db.SaveChanges();
+            Close();
+
         }
     }
 }

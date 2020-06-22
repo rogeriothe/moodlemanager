@@ -5,7 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1c801900663a432880f41b99d26c1ce2" Name="Diagram1">
-        <EntityTypeShape EntityType="moodleModel.User" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="moodleModel.Config" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="moodleModel.Categories" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="moodleModel.Users" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

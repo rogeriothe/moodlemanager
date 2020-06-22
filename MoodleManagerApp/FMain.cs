@@ -30,5 +30,13 @@ namespace MoodleManagerApp
                 f.ShowDialog();
             }
         }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            using (FCategoryCon f = new FCategoryCon())
+            {
+                f.ShowDialog();
+            }
+        }
     }
 }

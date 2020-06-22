@@ -40,6 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.chkSuspended = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button1
@@ -143,11 +144,22 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Senha";
             // 
+            // chkSuspended
+            // 
+            this.chkSuspended.AutoSize = true;
+            this.chkSuspended.Location = new System.Drawing.Point(24, 125);
+            this.chkSuspended.Name = "chkSuspended";
+            this.chkSuspended.Size = new System.Drawing.Size(73, 17);
+            this.chkSuspended.TabIndex = 11;
+            this.chkSuspended.Text = "Suspenso";
+            this.chkSuspended.UseVisualStyleBackColor = true;
+            // 
             // FUserAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 165);
+            this.Controls.Add(this.chkSuspended);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtEmail);
@@ -182,5 +194,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox chkSuspended;
     }
 }

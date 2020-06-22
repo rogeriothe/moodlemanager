@@ -12,6 +12,7 @@ namespace MoodleManagerApp
 {
     public partial class FBase : Form
     {
+        public moodleEntities db = new moodleEntities();
         public FBase()
         {
             InitializeComponent();

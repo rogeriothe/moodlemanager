@@ -1,68 +1,60 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using RestSharp;
 
 namespace MoodleManagerApp.Repositorio
 {
-    public class UserApi
+    public class CategoryApi
     {
-        
-        public static IList<Users> get_users()
+
+
+        public static IList<Categories> get_categories()
         {
 
             Cursor.Current = Cursors.WaitCursor;
 
             moodleEntities db = new moodleEntities();
 
-            var system_users = new List<string> { "guest", "admin", "moodlemanager" };
+            var system_categories = new List<string> { "Miscellaneous" };
 
-            var client = new RestClient(ConfigRepo.getUrl() + "?wstoken=" + ConfigRepo.getToken()  + "&wsfunction=core_user_get_users&moodlewsrestformat=json&criteria[0][key]=auth&criteria[0][value]=manual");
+            var client = new RestClient(ConfigRepo.getUrl() + "?wstoken=" + ConfigRepo.getToken() + "&wsfunction=core_course_get_categories&moodlewsrestformat=json");
+
+            Clipboard.SetText(client.BaseUrl.ToString());
+
             client.Timeout = -1;
-            var request = new RestRequest(Method.GET);
-            IRestResponse response = client.Execute(request);
-            JObject usuarioMoodle = JObject.Parse(response.Content);
-            IList<JToken> results = usuarioMoodle["users"].Children().ToList();
-            IList<Users> userResults = new List<Users>();
-            foreach (JToken result in results)
-            {
-                Users userResult = result.ToObject<Users>();                
-                if (!system_users.Contains(userResult.username)) {
-
-                    userResults.Add(userResult);
-                }
-            }
+            var request = new RestRequest(Method.POST);
+            IRestResponse response = client.Execute(request);                      
             
-            Cursor.Current = Cursors.Default;
-
-            return userResults;
+            List<Categories> categories = JsonConvert.DeserializeObject<List<Categories>>(response.Content);
+            
+            return categories;
         }
 
         public static int create_user(Users user)
-        {            
+        {
             Cursor.Current = Cursors.WaitCursor;
             var client = new RestClient(ConfigRepo.getUrl() + "?wstoken=" + ConfigRepo.getToken() +
-                "&wsfunction=core_user_create_users&moodlewsrestformat=json"+
+                "&wsfunction=core_user_create_users&moodlewsrestformat=json" +
                 "&users[0][username]=" + user.username +
                 "&users[0][auth]=manual" +
                 "&users[0][password]=" + user.password +
                 "&users[0][firstname]=" + user.firstname +
                 "&users[0][lastname]=" + user.lastname +
                 "&users[0][email]=" + user.email);
-                       
+
 
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             IRestResponse response = client.Execute(request);
             string source = response.Content;
-            dynamic data = JObject.Parse(source.Replace("[","").Replace("]", ""));
+            dynamic data = JObject.Parse(source.Replace("[", "").Replace("]", ""));
 
             Cursor.Current = Cursors.Default;
             return data.id;
@@ -90,7 +82,7 @@ namespace MoodleManagerApp.Repositorio
                 "&users[0][firstname]=" + user.firstname +
                 "&users[0][lastname]=" + user.lastname +
                 "&users[0][email]=" + user.email +
-                "&users[0][suspended]=" + suspended );
+                "&users[0][suspended]=" + suspended);
 
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
@@ -107,7 +99,7 @@ namespace MoodleManagerApp.Repositorio
 
             var client = new RestClient(ConfigRepo.getUrl() + "?wstoken=" + ConfigRepo.getToken() +
                "&wsfunction=core_user_delete_users&moodlewsrestformat=json" +
-               "&userids[0]=" + user.id );
+               "&userids[0]=" + user.id);
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             client.Execute(request);
@@ -116,5 +108,4 @@ namespace MoodleManagerApp.Repositorio
 
         }
     }
-    
 }

@@ -14,7 +14,7 @@ namespace MoodleManagerApp
 {
     public partial class FUserCon : FBase
     {
-        moodleEntities db = new moodleEntities();
+        
         public FUserCon()
         {
             InitializeComponent();
@@ -28,8 +28,23 @@ namespace MoodleManagerApp
         private void loadGrid()
         {
             db = new moodleEntities();
-            var qr = db.User.ToList();
-            grid.DataSource = qr;
+
+            if (txtName.Text.Length > 3)
+            {
+
+                var qr = from p in db.Users
+                         where p.firstname.Contains(txtName.Text) || p.username.Contains(txtName.Text)
+                         select p;
+
+                grid.DataSource = qr.ToList();
+            }
+            else
+            {
+                
+                var qr = db.Users.ToList();
+                grid.DataSource = qr;
+            }
+
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -38,16 +53,17 @@ namespace MoodleManagerApp
 
             foreach (var item in usersMoodle)
             {
-                if (db.User.FirstOrDefault(a=>a.username == item.username) == null)
+                if (db.Users.FirstOrDefault(a=>a.username == item.username) == null)
                 {
-                    User user = new User();
+                    Users user = new Users();
                     user.email = item.email;
                     user.firstname = item.firstname;
                     user.lastname = item.lastname;
-                    user.password = item.password;
+                    user.password = item.username;
                     user.username = item.username;
-                    user.moodle_id = item.moodle_id;
-                    db.User.Add(user);
+                    user.id = item.id;
+                    user.suspended = item.suspended;
+                    db.Users.Add(user);
                     db.SaveChanges();
                 }
             }
@@ -77,16 +93,18 @@ namespace MoodleManagerApp
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            User user = new User();
-            user.moodle_id = 7;
-            UserApi.delete_user(user);
 
-            //int id = Convert.ToInt32(grid.SelectedRows[0].Cells[0].Value.ToString());
-            //var user = db.User.FirstOrDefault(a => a.id == id);
-            //UserApi.delete_user(user);
-            //db.User.Remove(user);
-            //db.SaveChanges();
-            //loadGrid();
+            int id = Convert.ToInt32(grid.SelectedRows[0].Cells[0].Value.ToString());
+            var user = db.Users.FirstOrDefault(a => a.id == id);
+            UserApi.delete_user(user);
+            db.Users.Remove(user);
+            db.SaveChanges();
+            loadGrid();
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            loadGrid();
         }
     }
 }
