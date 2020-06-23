@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ namespace MoodleManagerApp
 {
     public partial class FTurmaInc : MoodleManagerApp.FBase
     {
+        Groups group = new Groups();
+        public int id = 0;
         public FTurmaInc()
         {
             InitializeComponent();
@@ -23,6 +26,17 @@ namespace MoodleManagerApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (id == 0)
+            {
+                group = new Groups();
+            }
+
+            group.category_id = ((Categories)cbCategoria.SelectedItem).id;
+            group.name = txtName.Text;
+
+            db.Groups.AddOrUpdate(group);
+            db.SaveChanges();
+
             Close();
         }
 
@@ -32,6 +46,14 @@ namespace MoodleManagerApp
             cbCategoria.DataSource = categories;
             cbCategoria.DisplayMember = "name";
             cbCategoria.ValueMember = "id";
+
+            group = db.Groups.FirstOrDefault(a=>a.id == id);
+
+            if (id != 0)
+            {
+                cbCategoria.SelectedItem = group.Categories;
+                txtName.Text = group.name;
+            }
         }
     }
 }
