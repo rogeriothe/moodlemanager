@@ -8,6 +8,8 @@
         <EntityTypeShape EntityType="moodleModel.Config" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="moodleModel.Categories" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="moodleModel.Users" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="moodleModel.Groups" Width="1.5" PointX="3" PointY="4.125" />
+        <AssociationConnector Association="moodleModel.FK_Groups_Categories" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

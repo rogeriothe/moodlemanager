@@ -28,5 +28,6 @@ namespace MoodleManagerApp
         public virtual DbSet<Config> Config { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Groups> Groups { get; set; }
     }
 }

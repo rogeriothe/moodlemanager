@@ -12,18 +12,12 @@ namespace MoodleManagerApp
     using System;
     using System.Collections.Generic;
     
-    public partial class Categories
+    public partial class Groups
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Categories()
-        {
-            this.Groups = new HashSet<Groups>();
-        }
-    
         public long id { get; set; }
         public string name { get; set; }
+        public Nullable<long> category_id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Groups> Groups { get; set; }
+        public virtual Categories Categories { get; set; }
     }
 }

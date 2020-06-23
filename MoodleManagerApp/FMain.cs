@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoodleManagerApp.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,8 @@ namespace MoodleManagerApp
 
         private void FMain_Load(object sender, EventArgs e)
         {
-            
+            timer_site.Enabled = true;
+            Checksite();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -34,6 +36,31 @@ namespace MoodleManagerApp
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             using (FCategoryCon f = new FCategoryCon())
+            {
+                f.ShowDialog();
+            }
+        }
+
+        private void timer_site_Tick(object sender, EventArgs e)
+        {
+            Checksite();
+        }
+
+        private void Checksite()
+        {
+            if (Funcoes.get_site_info())
+            {
+                lbStatus.Text = "Moodle On-line";
+            }
+            else
+            {
+                lbStatus.Text = "Moodle Off-line";
+            }
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            using (FTurmaCon f = new FTurmaCon())
             {
                 f.ShowDialog();
             }

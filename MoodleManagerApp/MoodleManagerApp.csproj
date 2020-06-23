@@ -150,11 +150,29 @@
     <Compile Include="FCategoryCon.Designer.cs">
       <DependentUpon>FCategoryCon.cs</DependentUpon>
     </Compile>
+    <Compile Include="FCategoryInc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCategoryInc.Designer.cs">
+      <DependentUpon>FCategoryInc.cs</DependentUpon>
+    </Compile>
     <Compile Include="FMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FMain.Designer.cs">
       <DependentUpon>FMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FTurmaCon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FTurmaCon.Designer.cs">
+      <DependentUpon>FTurmaCon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FTurmaInc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FTurmaInc.Designer.cs">
+      <DependentUpon>FTurmaInc.cs</DependentUpon>
     </Compile>
     <Compile Include="FUserAdd.cs">
       <SubType>Form</SubType>
@@ -167,6 +185,9 @@
     </Compile>
     <Compile Include="FUserCon.Designer.cs">
       <DependentUpon>FUserCon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Groups.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -183,8 +204,17 @@
     <EmbeddedResource Include="FCategoryCon.resx">
       <DependentUpon>FCategoryCon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FCategoryInc.resx">
+      <DependentUpon>FCategoryInc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FTurmaCon.resx">
+      <DependentUpon>FTurmaCon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FTurmaInc.resx">
+      <DependentUpon>FTurmaInc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FUserAdd.resx">
       <DependentUpon>FUserAdd.cs</DependentUpon>
@@ -249,6 +279,9 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\folder.png" />
+    <None Include="Resources\group.png" />
+    <None Include="Resources\ilustracao-de-social-midia-conceito_53876-17828.jpg" />
     <None Include="Resources\application_cascade.png" />
   </ItemGroup>
   <ItemGroup>

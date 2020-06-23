@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,6 +45,12 @@ namespace MoodleManagerApp
                 var qr = db.Users.ToList();
                 grid.DataSource = qr;
             }
+
+            this.grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+            grid.Columns[2].Visible = false;
+            grid.Columns[6].Visible = false;
+
 
         }
 
@@ -93,13 +100,17 @@ namespace MoodleManagerApp
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            if (Funcoes.Pergunta("Excluir usuário? Esta operação é irreversível.","Excluir?"))
+            {
+                int id = Convert.ToInt32(grid.SelectedRows[0].Cells[0].Value.ToString());
+                var user = db.Users.FirstOrDefault(a => a.id == id);
+                UserApi.delete_user(user);
+                db.Users.Remove(user);
+                db.SaveChanges();
+                loadGrid();
+            }
 
-            int id = Convert.ToInt32(grid.SelectedRows[0].Cells[0].Value.ToString());
-            var user = db.Users.FirstOrDefault(a => a.id == id);
-            UserApi.delete_user(user);
-            db.Users.Remove(user);
-            db.SaveChanges();
-            loadGrid();
+
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

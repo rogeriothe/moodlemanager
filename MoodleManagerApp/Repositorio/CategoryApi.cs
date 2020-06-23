@@ -26,28 +26,22 @@ namespace MoodleManagerApp.Repositorio
 
             var client = new RestClient(ConfigRepo.getUrl() + "?wstoken=" + ConfigRepo.getToken() + "&wsfunction=core_course_get_categories&moodlewsrestformat=json");
 
-            Clipboard.SetText(client.BaseUrl.ToString());
-
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
-            IRestResponse response = client.Execute(request);                      
-            
+            IRestResponse response = client.Execute(request);
+
             List<Categories> categories = JsonConvert.DeserializeObject<List<Categories>>(response.Content);
-            
+
             return categories;
         }
 
-        public static int create_user(Users user)
+        public static int create_category(Categories category)
         {
             Cursor.Current = Cursors.WaitCursor;
             var client = new RestClient(ConfigRepo.getUrl() + "?wstoken=" + ConfigRepo.getToken() +
-                "&wsfunction=core_user_create_users&moodlewsrestformat=json" +
-                "&users[0][username]=" + user.username +
-                "&users[0][auth]=manual" +
-                "&users[0][password]=" + user.password +
-                "&users[0][firstname]=" + user.firstname +
-                "&users[0][lastname]=" + user.lastname +
-                "&users[0][email]=" + user.email);
+                "&wsfunction=core_course_create_categories&moodlewsrestformat=json" +
+                "&categories[0][name]=" + category.name +
+                "&categories[0][parent]=0");
 
 
             client.Timeout = -1;
@@ -61,45 +55,34 @@ namespace MoodleManagerApp.Repositorio
 
         }
 
-        internal static void update_user(Users user)
+        internal static void update_category(Categories category)
         {
             Cursor.Current = Cursors.WaitCursor;
-
-            string paramChangePassword = "";
-
-            if (Funcoes.Pergunta("Deseja atualizar a senha do usuário?", "Trocar senha?"))
-            {
-                paramChangePassword = "&users[0][password]=" + user.password;
-            }
-
-            int suspended = user.suspended == true ? 1 : 0;
             var client = new RestClient(ConfigRepo.getUrl() + "?wstoken=" + ConfigRepo.getToken() +
-                "&wsfunction=core_user_update_users&moodlewsrestformat=json" +
-                "&users[0][id]=" + user.id +
-                "&users[0][username]=" + user.username +
-                "&users[0][auth]=manual" +
-                paramChangePassword +
-                "&users[0][firstname]=" + user.firstname +
-                "&users[0][lastname]=" + user.lastname +
-                "&users[0][email]=" + user.email +
-                "&users[0][suspended]=" + suspended);
+                "&wsfunction=core_course_update_categories&moodlewsrestformat=json" +
+                "&categories[0][id]=" + category.id +
+                "&categories[0][name]=" + category.name);
+
 
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
-            client.Execute(request);
-            //IRestResponse response = client.Execute(request);
-            //string source = response.Content;          
+            IRestResponse response = client.Execute(request);
+                        
             Cursor.Current = Cursors.Default;
+            
 
         }
 
-        internal static void delete_user(Users user)
+        internal static void delete_category(Categories category)
         {
             Cursor.Current = Cursors.WaitCursor;
 
             var client = new RestClient(ConfigRepo.getUrl() + "?wstoken=" + ConfigRepo.getToken() +
-               "&wsfunction=core_user_delete_users&moodlewsrestformat=json" +
-               "&userids[0]=" + user.id);
+               "&wsfunction=core_course_delete_categories&moodlewsrestformat=json" +
+               "&categories[0][id]=" + category.id +
+               "&categories[0][recursive]=0" +
+               "&categories[0][newparent]=1");
+
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             client.Execute(request);
