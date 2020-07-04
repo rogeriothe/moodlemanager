@@ -29,5 +29,6 @@ namespace MoodleManagerApp
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Groups> Groups { get; set; }
+        public virtual DbSet<Courses> Courses { get; set; }
     }
 }

@@ -98,7 +98,7 @@
             // 
             // timer_site
             // 
-            this.timer_site.Interval = 10000;
+            this.timer_site.Interval = 30000;
             this.timer_site.Tick += new System.EventHandler(this.timer_site_Tick);
             // 
             // pictureBox1

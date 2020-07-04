@@ -18,6 +18,7 @@ namespace MoodleManagerApp
         public Categories()
         {
             this.Groups = new HashSet<Groups>();
+            this.Courses = new HashSet<Courses>();
         }
     
         public long id { get; set; }
@@ -25,5 +26,7 @@ namespace MoodleManagerApp
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Groups> Groups { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Courses> Courses { get; set; }
     }
 }
