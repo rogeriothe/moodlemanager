@@ -22,8 +22,7 @@ namespace MoodleManagerApp.Repositorio
 
             moodleEntities db = new moodleEntities();
 
-            var system_categories = new List<string> { "Miscellaneous" };
-
+            
             var client = new RestClient(ConfigRepo.getUrl() + "?wstoken=" + ConfigRepo.getToken() + "&wsfunction=core_course_get_categories&moodlewsrestformat=json");
 
             client.Timeout = -1;

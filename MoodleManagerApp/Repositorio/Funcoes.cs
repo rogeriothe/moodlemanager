@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,24 @@ namespace MoodleManagerApp.Repositorio
 {
     public class Funcoes
     {
+        public static IRestResponse Execute(string url_params, RestSharp.Method method)
+        {
+
+            Cursor.Current = Cursors.WaitCursor;
+            var client = new RestClient(ConfigRepo.getUrl() + "?wstoken=" + ConfigRepo.getToken() + url_params);
+            client.Timeout = -1;
+            var request = new RestRequest(method);
+            IRestResponse response = client.Execute(request);
+            Cursor.Current = Cursors.Default;
+
+            return response;
+        }
+
 
         public static bool get_site_info()
         {
 
+            
 
 
             try

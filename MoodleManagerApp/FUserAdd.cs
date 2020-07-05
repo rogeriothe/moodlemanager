@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.SqlServer;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -61,7 +62,7 @@ namespace MoodleManagerApp
 
             }else
             {
-                UserApi.update_user(user);
+                UserApi.update_user(user, true);
             }
 
             db.Users.AddOrUpdate(user);

@@ -96,22 +96,7 @@ namespace MoodleManagerApp
 
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
-            List<Groups> lista = GroupsApi.get_groups();
-
-            foreach (Groups item in lista)
-            {
-                var qr = (from p in db.Groups
-                          where p.category_id == item.category_id && p.name == item.name
-                          select p).ToList();
-
-                if (qr.Count() == 0)
-                {
-                    db.Groups.Add(new Groups { name = item.name, category_id = item.category_id });
-                    db.SaveChanges();
-                }
-            }
-
-            loadGrid();
+            
         }
     }
 }

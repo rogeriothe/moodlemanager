@@ -56,26 +56,9 @@ namespace MoodleManagerApp
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            var usersMoodle = UserApi.get_users();
+            
 
-            foreach (var item in usersMoodle)
-            {
-                if (db.Users.FirstOrDefault(a=>a.username == item.username) == null)
-                {
-                    Users user = new Users();
-                    user.email = item.email;
-                    user.firstname = item.firstname;
-                    user.lastname = item.lastname;
-                    user.password = item.username;
-                    user.username = item.username;
-                    user.id = item.id;
-                    user.suspended = item.suspended;
-                    db.Users.Add(user);
-                    db.SaveChanges();
-                }
-            }
-
-            loadGrid();
+            
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)

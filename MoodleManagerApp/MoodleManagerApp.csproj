@@ -165,6 +165,12 @@
     <Compile Include="FMain.Designer.cs">
       <DependentUpon>FMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FSync.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSync.Designer.cs">
+      <DependentUpon>FSync.cs</DependentUpon>
+    </Compile>
     <Compile Include="FTurmaCon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FSync.resx">
+      <DependentUpon>FSync.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FTurmaCon.resx">
       <DependentUpon>FTurmaCon.cs</DependentUpon>

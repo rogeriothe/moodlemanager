@@ -32,7 +32,6 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.txtName = new System.Windows.Forms.TextBox();
             this.grid = new System.Windows.Forms.DataGridView();
             this.toolStrip2.SuspendLayout();
@@ -44,8 +43,7 @@
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton3,
             this.toolStripButton2,
-            this.toolStripButton1,
-            this.toolStripButton4});
+            this.toolStripButton1});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(638, 25);
@@ -78,15 +76,6 @@
             this.toolStripButton1.Size = new System.Drawing.Size(62, 22);
             this.toolStripButton1.Text = "Excluir";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.Image = global::MoodleManagerApp.Properties.Resources.connect;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(73, 22);
-            this.toolStripButton4.Text = "Importar";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // txtName
             // 
@@ -139,7 +128,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.DataGridView grid;
     }

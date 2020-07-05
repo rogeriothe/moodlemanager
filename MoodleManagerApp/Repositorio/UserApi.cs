@@ -26,6 +26,7 @@ namespace MoodleManagerApp.Repositorio
 
             var client = new RestClient(ConfigRepo.getUrl() + "?wstoken=" + ConfigRepo.getToken()  + "&wsfunction=core_user_get_users&moodlewsrestformat=json&criteria[0][key]=auth&criteria[0][value]=manual");
             client.Timeout = -1;
+                        
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             JObject usuarioMoodle = JObject.Parse(response.Content);
@@ -48,36 +49,34 @@ namespace MoodleManagerApp.Repositorio
         public static int create_user(Users user)
         {            
             Cursor.Current = Cursors.WaitCursor;
-            var client = new RestClient(ConfigRepo.getUrl() + "?wstoken=" + ConfigRepo.getToken() +
-                "&wsfunction=core_user_create_users&moodlewsrestformat=json"+
+
+            IRestResponse response = Funcoes.Execute("&wsfunction=core_user_create_users&moodlewsrestformat=json" +
                 "&users[0][username]=" + user.username +
                 "&users[0][auth]=manual" +
                 "&users[0][password]=" + user.password +
                 "&users[0][firstname]=" + user.firstname +
                 "&users[0][lastname]=" + user.lastname +
-                "&users[0][email]=" + user.email);
-                       
-
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            IRestResponse response = client.Execute(request);
+                "&users[0][email]=" + user.email, Method.POST);            
+            
             string source = response.Content;
             dynamic data = JObject.Parse(source.Replace("[","").Replace("]", ""));
 
             Cursor.Current = Cursors.Default;
-            return data.id;
+            return data.id == null ? 0 : data.id;
 
         }
 
-        internal static void update_user(Users user)
+        internal static void update_user(Users user, bool pergunta)
         {
             Cursor.Current = Cursors.WaitCursor;
 
             string paramChangePassword = "";
-
-            if (Funcoes.Pergunta("Deseja atualizar a senha do usuário?", "Trocar senha?"))
+            if (pergunta)
             {
-                paramChangePassword = "&users[0][password]=" + user.password;
+                if (Funcoes.Pergunta("Deseja atualizar a senha do usuário?", "Trocar senha?"))
+                {
+                    paramChangePassword = "&users[0][password]=" + user.password;
+                }
             }
 
             int suspended = user.suspended == true ? 1 : 0;

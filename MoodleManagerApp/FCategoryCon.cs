@@ -19,27 +19,7 @@ namespace MoodleManagerApp
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            var categoriesMoodle = CategoryApi.get_categories();
-
-            foreach (var item in categoriesMoodle)
-            {
-                if (db.Categories.FirstOrDefault(a => a.name == item.name) == null)
-                {
-
-                    if (item.name != "Miscellaneous")
-                    {
-                        Categories category = new Categories();
-
-                        category.id = item.id;
-                        category.name = item.name;
-                        db.Categories.Add(category);
-                        db.SaveChanges();
-                    }
-                    
-                }
-            }
-
-            loadGrid();
+            
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
