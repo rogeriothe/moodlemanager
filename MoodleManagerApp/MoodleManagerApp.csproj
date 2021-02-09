@@ -117,15 +117,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Categories.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Config.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Courses.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -147,56 +138,11 @@
     <Compile Include="FBase.Designer.cs">
       <DependentUpon>FBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="FCategoryCon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FCategoryCon.Designer.cs">
-      <DependentUpon>FCategoryCon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FCategoryInc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FCategoryInc.Designer.cs">
-      <DependentUpon>FCategoryInc.cs</DependentUpon>
-    </Compile>
     <Compile Include="FMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FMain.Designer.cs">
       <DependentUpon>FMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FSync.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FSync.Designer.cs">
-      <DependentUpon>FSync.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FTurmaCon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FTurmaCon.Designer.cs">
-      <DependentUpon>FTurmaCon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FTurmaInc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FTurmaInc.Designer.cs">
-      <DependentUpon>FTurmaInc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FUserAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FUserAdd.Designer.cs">
-      <DependentUpon>FUserAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FUserCon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FUserCon.Designer.cs">
-      <DependentUpon>FUserCon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Groups.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -205,35 +151,11 @@
     <Compile Include="Repositorio\ConfigRepo.cs" />
     <Compile Include="Repositorio\Funcoes.cs" />
     <Compile Include="Repositorio\UserApi.cs" />
-    <Compile Include="Users.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="FBase.resx">
       <DependentUpon>FBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FCategoryCon.resx">
-      <DependentUpon>FCategoryCon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FCategoryInc.resx">
-      <DependentUpon>FCategoryInc.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FSync.resx">
-      <DependentUpon>FSync.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FTurmaCon.resx">
-      <DependentUpon>FTurmaCon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FTurmaInc.resx">
-      <DependentUpon>FTurmaInc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FUserAdd.resx">
-      <DependentUpon>FUserAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FUserCon.resx">
-      <DependentUpon>FUserCon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

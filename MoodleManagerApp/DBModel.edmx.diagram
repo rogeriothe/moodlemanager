@@ -5,13 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1c801900663a432880f41b99d26c1ce2" Name="Diagram1">
-        <EntityTypeShape EntityType="moodleModel.Config" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="moodleModel.Categories" Width="1.5" PointX="0.75" PointY="2.25" />
-        <EntityTypeShape EntityType="moodleModel.Users" Width="1.5" PointX="5.75" PointY="3.75" />
-        <EntityTypeShape EntityType="moodleModel.Groups" Width="1.5" PointX="3" PointY="1" />
-        <AssociationConnector Association="moodleModel.FK_Groups_Categories" />
-        <EntityTypeShape EntityType="moodleModel.Courses" Width="1.5" PointX="3" PointY="3.625" />
-        <AssociationConnector Association="moodleModel.FK_courses_Categories" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

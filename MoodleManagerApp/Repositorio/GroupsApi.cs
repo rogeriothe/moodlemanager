@@ -15,13 +15,13 @@ namespace MoodleManagerApp.Repositorio
     {
 
 
-        public static List<Groups> get_groups()
+        public static List<Turma> get_turmas()
         {
 
             moodleEntities db = new moodleEntities();
             IRestResponse response = Funcoes.Execute("&wsfunction=core_course_get_courses&moodlewsrestformat=json", Method.POST);
             List<Courses> lista_cursos = JsonConvert.DeserializeObject<List<Courses>>(response.Content);
-            List<Groups> lista = new List<Groups>();
+            List<Turma> lista = new List<Turma>();
             foreach (var item in lista_cursos)
             {
                 var name = item.fullname.Split(new string[] { " - " }, StringSplitOptions.None)[0].Trim();
@@ -31,10 +31,10 @@ namespace MoodleManagerApp.Repositorio
                          select p).ToList();
                 if (qr.Count() == 0)
                 {
-                    Groups group = new Groups();
-                    group.name = name;
-                    group.category_id = category_id;
-                    lista.Add(group);
+                    Turma turma = new Turma();
+                    turma.name = name;
+                    turma.category_id = category_id;
+                    lista.Add(turma);
                 }                
             }
 

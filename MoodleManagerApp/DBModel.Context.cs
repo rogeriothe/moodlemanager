@@ -25,10 +25,5 @@ namespace MoodleManagerApp
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Config> Config { get; set; }
-        public virtual DbSet<Categories> Categories { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Groups> Groups { get; set; }
-        public virtual DbSet<Courses> Courses { get; set; }
     }
 }
